@@ -2,6 +2,7 @@ package summers.colemantriva;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,15 +21,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Array;
 import java.sql.BatchUpdateException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    //define varibales
+    //define variables
     private Button answer1, answer2, answer3, answer4;
     private TextView score;
     private TextView question;
+
 
     private Questions mQuestions = new Questions();
     private String mAnswer;
@@ -35,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
     private int mQuestionLength = mQuestions.sQutestions.length;
 
     Random random;
+
+    private SharedPreferences savedValues;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,17 +58,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Snackbar snackbar = Snackbar
-                        .make(view, "Unable to send Email. No Defalut Email Client Installed", Snackbar.LENGTH_LONG)
+                        .make(view, "Thank You for Liking my App!", Snackbar.LENGTH_LONG)
                         .setAction("Retry", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Toast.makeText(getApplicationContext(), "Retry is clicked", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Confirm Click", Toast.LENGTH_LONG).show();
                             }
                         });
 
-                snackbar.setActionTextColor(Color.RED);
+                snackbar.setActionTextColor(Color.BLUE);
                 View snackbarView = snackbar.getView();
-                snackbarView.setBackgroundColor(Color.DKGRAY);
+                snackbarView.setBackgroundColor(Color.BLUE);
 
                 TextView textView = snackbarView.findViewById(android.support.design.R.id.snackbar_text);
                 textView.setTextColor(Color.YELLOW);
@@ -66,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
         random = new Random();
 
@@ -78,7 +87,9 @@ public class MainActivity extends AppCompatActivity {
         score = (TextView) findViewById(R.id.score);
         question = (TextView) findViewById(R.id.question);
 
+
         updateQuestions(random.nextInt(mQuestionLength));
+
 
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,8 +98,13 @@ public class MainActivity extends AppCompatActivity {
                     mScore++;
                     score.setText("Score: " + mScore);
                     updateQuestions(random.nextInt(mQuestionLength));
+                    if(mScore == 10){
+                        Intent i = new Intent(getApplicationContext(), Gameover.class);
+                        startActivity(i);
+                    }
                 }else{
-                    gameOver();
+                    mScore--;
+                    score.setText("Score: " + mScore);
                 }
             }
         });
@@ -99,8 +115,13 @@ public class MainActivity extends AppCompatActivity {
                     mScore++;
                     score.setText("Score: " + mScore);
                     updateQuestions(random.nextInt(mQuestionLength));
+                    if(mScore == 10){
+                        Intent i = new Intent(getApplicationContext(), Gameover.class);
+                        startActivity(i);
+                    }
                 }else{
-                    gameOver();
+                    mScore--;
+                    score.setText("Score: " + mScore);
                 }
             }
         });
@@ -111,8 +132,13 @@ public class MainActivity extends AppCompatActivity {
                     mScore++;
                     score.setText("Score: " + mScore);
                     updateQuestions(random.nextInt(mQuestionLength));
+                    if(mScore == 10){
+                        Intent i = new Intent(getApplicationContext(), Gameover.class);
+                        startActivity(i);
+                    }
                 }else{
-                    gameOver();
+                    mScore--;
+                    score.setText("Score: " + mScore);
                 }
             }
         });
@@ -123,15 +149,18 @@ public class MainActivity extends AppCompatActivity {
                     mScore++;
                     score.setText("Score: " + mScore);
                     updateQuestions(random.nextInt(mQuestionLength));
+                    if(mScore == 10){
+                        Intent i = new Intent(getApplicationContext(), Gameover.class);
+                        startActivity(i);
+                    }
                 }else{
-                    gameOver();
+                    mScore--;
+                    score.setText("Score: " + mScore);
                 }
             }
         });
 
-
     }
-
 
     private void updateQuestions(int num){
         question.setText(mQuestions.getQuestion(num));
@@ -141,28 +170,6 @@ public class MainActivity extends AppCompatActivity {
         answer4.setText(mQuestions.getChoice4(num));
 
         mAnswer = mQuestions.getAnswer(num);
-
-    }
-    private void gameOver() {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
-        alertDialogBuilder
-                .setMessage("Game Over Your Score is " + mScore + "points")
-                .setCancelable(false)
-                .setPositiveButton("NEW GAME",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                            }
-                        })
-                .setNegativeButton("EXIT",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                finish();
-                            }
-                        });
-
 
     }
 

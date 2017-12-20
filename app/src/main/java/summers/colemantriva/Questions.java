@@ -1,5 +1,7 @@
 package summers.colemantriva;
 
+import java.util.ArrayList;
+
 /**
  * Created by 660252823 on 12/14/2017.
  */
@@ -16,7 +18,7 @@ public class Questions {
             "What is Coleman University Street Address?",
             "How old is Charlie Morgan?",
             "In what year did Leticia Rabor join the Coleman University staff?",
-            "How is the Best instructor at Coleman?",
+            "Who is the Best instructor at Coleman?",
 
     };
 
@@ -82,5 +84,7 @@ public class Questions {
 
 
     }
+
+
 
 }

@@ -6,9 +6,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="summers.colemantriva.MainActivity">
+    tools:context="summers.colemantriva.MainActivity"
+    android:background="@color/colorPrimary">
 
     <Button
+        style="@style/buttonStyle"
         android:id="@+id/answer1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,6 +20,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
+        style="@style/buttonStyle"
         android:id="@+id/answer2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,6 +30,7 @@
         android:layout_alignParentStart="true" />
 
     <Button
+        style="@style/buttonStyle"
         android:id="@+id/answer3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,6 +40,7 @@
         android:layout_alignParentStart="true" />
 
     <Button
+        style="@style/buttonStyle"
         android:id="@+id/answer4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,25 +52,28 @@
     <TextView
         android:id="@+id/score"
         android:gravity="center"
-        android:textSize="24dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:text="@string/score"
+        android:textSize="30dp"
+        android:layout_width="175dp"
+        android:layout_height="50dp"
+        android:text="Score:"
+        android:layout_marginRight="50dp"
         android:layout_below="@+id/appBarLayout"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/colorBlack"/>
+
 
     <TextView
         android:id="@+id/question"
         android:gravity="center"
-        android:textSize="24dp"
+        android:textSize="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/question"
         android:layout_centerHorizontal="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/score"
-        android:layout_above="@+id/answer4" />
+        android:layout_above="@+id/answer4"
+        android:textColor="@color/colorBlack"/>
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -87,13 +95,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        app:srcCompat="@drawable/cube"
+        app:srcCompat="@drawable/thumb"
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
         android:layout_above="@+id/answer4"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="18dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="175dp"
+        android:layout_height="30dp"
+        android:text="Click here to like this app!"
+        android:textColor="@color/colorBlack"
+        android:layout_alignBottom="@+id/fab"
+        android:layout_toStartOf="@+id/fab" />
 
 
 </RelativeLayout>

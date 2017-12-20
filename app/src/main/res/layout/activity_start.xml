@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="summers.colemantriva.start"
+    android:background="@color/colorPrimary">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/coleman"
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textView2" />
+
+    <Button
+        style="@style/buttonStyle"
+        android:id="@+id/startbutton"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:text="START GAME"
+        android:onClick="startGame"
+        android:layout_marginBottom="28dp"
+        android:layout_above="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:textSize="30sp"
+        android:text="Coleman University Triva Game"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/coleman"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_alignEnd="@+id/textView2" />
+
+</RelativeLayout>
